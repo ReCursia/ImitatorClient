@@ -7,7 +7,6 @@ class SocketUdpContractPresenter
 {
 public:
     virtual ~SocketUdpContractPresenter() = 0;
-    virtual void statusBarMessageChanged(QString message) = 0;
     virtual void datagramArrived(QString datagram) = 0;
 };
 

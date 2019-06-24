@@ -3,11 +3,16 @@
 
 #include "QList"
 #include "QStringListModel"
+
+const QStringList CHECK_SUM_MESSAGE = {"КС: ОК","КС: FAIL"};
+enum CheckSum {OK,FAIL};
+
 class DataModel
 {
 private:
     QStringList values;
-    QStringListModel* model; 
+    QStringListModel* model;
+    QString getCheckSumMessage(double firstValue,double secondValue);
 public:
     DataModel();
     ~DataModel();

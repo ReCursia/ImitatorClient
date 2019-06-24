@@ -5,10 +5,11 @@ SocketUdpModel::SocketUdpModel(SocketUdpContractPresenter* presenter){
     this->presenter = presenter;
     //Status
     status = OFF;
+    //Address
+    address.setAddress(QHostAddress::LocalHost);
     //Socket
     socket = new QUdpSocket(this);
-    address.setAddress(QHostAddress::LocalHost);
-    socket->bind(address,3456);
+    socket->bind(address,RECEIVER_PORT);
     connect(socket,SIGNAL(readyRead()),this,SLOT(readDatagram()));
 }
 

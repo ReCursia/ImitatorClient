@@ -10,6 +10,8 @@
 
 enum Status {OFF,ON};
 
+const quint16 RECEIVER_PORT = 3456;
+
 class SocketUdpModel: public QObject
 {
 private:

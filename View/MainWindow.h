@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
 #include <Presenter/SocketUdpPresenter.h>
-
 #include "Contract/SocketUdpContractView.h"
 
 namespace Ui {
@@ -18,7 +16,6 @@ class MainWindow : public QMainWindow, public SocketUdpContractView
 {
     Q_OBJECT
 private slots:
-
     void on_startButton_clicked();
     void on_clearButton_clicked();
 private:
@@ -31,10 +28,7 @@ public:
     void setStatusBarMessage(QString message);
     void lightOnLed();
     void lightOffLed();
-    void setListModel(QStringListModel *model);;
-
-    // SocketUdpContractView interface
-public:
+    void setListModel(QStringListModel *model);
     void scrollListToBottom();
 };
 

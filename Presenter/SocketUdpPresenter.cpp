@@ -57,11 +57,6 @@ void SocketUdpPresenter::onClearButtonPressed()
     dataModel->clear();
 }
 
-void SocketUdpPresenter::statusBarMessageChanged(QString message)
-{
-    view->setStatusBarMessage(message);
-}
-
 void SocketUdpPresenter::datagramArrived(QString datagram)
 {
     switch (status) {
