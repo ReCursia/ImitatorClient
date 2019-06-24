@@ -17,6 +17,7 @@ public:
     virtual void lightOffLed() = 0;
     //List view
     virtual void setListModel(QStringListModel* model) = 0;
+    virtual void scrollListToBottom() = 0;
 };
 
 #endif // SOCKETUDPCONTRACT_H

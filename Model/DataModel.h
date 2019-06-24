@@ -11,8 +11,6 @@ private:
 public:
     DataModel();
     ~DataModel();
-    QString getString(int i);
-
     void addDatagram(QString datagram);
     void clear();
     QStringListModel* getModel();

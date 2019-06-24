@@ -20,6 +20,7 @@ class MainWindow : public QMainWindow, public SocketUdpContractView
 private slots:
 
     void on_startButton_clicked();
+    void on_clearButton_clicked();
 private:
     Ui::MainWindow *ui;
     SocketUdpPresenter* presenter;
@@ -31,6 +32,10 @@ public:
     void lightOnLed();
     void lightOffLed();
     void setListModel(QStringListModel *model);;
+
+    // SocketUdpContractView interface
+public:
+    void scrollListToBottom();
 };
 
 #endif // MAINWINDOW_H

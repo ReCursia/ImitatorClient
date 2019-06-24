@@ -21,6 +21,11 @@ void MainWindow::on_startButton_clicked()
     presenter->onStartButtonPressed();
 }
 
+void MainWindow::on_clearButton_clicked()
+{
+    presenter->onClearButtonPressed();
+}
+
 void MainWindow::setStartButtonLabel(QString str)
 {
     ui->startButton->setText(str);
@@ -44,4 +49,9 @@ void MainWindow::lightOffLed()
 void MainWindow::setListModel(QStringListModel *model)
 {
     ui->listView->setModel(model);
+}
+
+void MainWindow::scrollListToBottom()
+{
+    ui->listView->scrollToBottom();
 }

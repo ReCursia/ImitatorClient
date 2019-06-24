@@ -37,6 +37,7 @@ void SocketUdpPresenter::startReceiver()
 void SocketUdpPresenter::addDatagramToList(QString datagram)
 {
     dataModel->addDatagram(datagram);
+    view->scrollListToBottom();
 }
 
 void SocketUdpPresenter::onStartButtonPressed()
@@ -49,6 +50,11 @@ void SocketUdpPresenter::onStartButtonPressed()
         stopReceiver();
         break;
     }
+}
+
+void SocketUdpPresenter::onClearButtonPressed()
+{
+    dataModel->clear();
 }
 
 void SocketUdpPresenter::statusBarMessageChanged(QString message)

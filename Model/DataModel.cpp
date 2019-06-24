@@ -12,10 +12,6 @@ DataModel::~DataModel()
     delete model;
 }
 
-QString DataModel::getString(int i)
-{
-    return values.value(i);
-}
 
 void DataModel::addDatagram(QString datagram)
 {
@@ -27,7 +23,7 @@ void DataModel::addDatagram(QString datagram)
         sum += strings[i].toDouble();
     }
     //maybe epsilon
-    if(sum == strings[strings.size()-1].toDouble()){
+    if(qFuzzyCompare(sum,strings[strings.size()-1].toDouble())){
         result.append("КС: ОК");
     }
     else{

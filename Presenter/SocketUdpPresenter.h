@@ -31,7 +31,7 @@ public:
     SocketUdpPresenter(SocketUdpContractView* view);
     ~SocketUdpPresenter();
     void onStartButtonPressed();
-
+    void onClearButtonPressed();
     // SocketUdpContractPresenter interface
 public:
     void statusBarMessageChanged(QString message);
