@@ -23,14 +23,19 @@ Status SocketUdpModel::getCurrentStatus()
     return status;
 }
 
-QString SocketUdpModel::getCurrentStatusMessage()
+void SocketUdpModel::startReceiver()
 {
-    switch(status){
-    case OFF:
-        return "Передача прекращена";
-    case ON:
-        return "Передача началась";
-    }
+    status = ON;
+}
+
+void SocketUdpModel::stopReceiver()
+{
+    status = OFF;
+}
+
+bool SocketUdpModel::isWorking()
+{
+    return (status == ON);
 }
 
 void SocketUdpModel::readDatagram()
@@ -40,5 +45,6 @@ void SocketUdpModel::readDatagram()
     QHostAddress sender;
     quint16 senderPort;
     socket->readDatagram(buffer.data(),buffer.size(),&sender,&senderPort);
-    presenter->datagramArrived(QString::fromStdString(buffer.toStdString()));
+    //Notify presenter about new data
+    if(isWorking()) presenter->datagramArrived(QString::fromStdString(buffer.toStdString()));
 }

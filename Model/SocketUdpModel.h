@@ -16,19 +16,19 @@ class SocketUdpModel: public QObject
 {
 private:
     Q_OBJECT
-    bool isWorking;
     Status status;
     QUdpSocket* socket;
     QHostAddress address;
     SocketUdpContractPresenter* presenter;
-private:
-    QString getCurrentStatusMessage();
+    bool isWorking();
 private slots:
     void readDatagram();
 public:
     SocketUdpModel(SocketUdpContractPresenter* presenter);
     ~SocketUdpModel();
     Status getCurrentStatus();
+    void startReceiver();
+    void stopReceiver();
 };
 
 

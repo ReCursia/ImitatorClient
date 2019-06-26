@@ -9,8 +9,6 @@ SocketUdpPresenter::SocketUdpPresenter(SocketUdpContractView* view)
     view->setListModel(dataModel->getModel());
     //Led is OFF
     view->lightOffLed();
-    //Status
-    status = OFF;
 }
 
 SocketUdpPresenter::~SocketUdpPresenter()
@@ -22,14 +20,14 @@ SocketUdpPresenter::~SocketUdpPresenter()
 
 void SocketUdpPresenter::stopReceiver()
 {
-    status = OFF;
+    socketModel->stopReceiver();
     view->lightOffLed();
     view->setStartButtonLabel(START_BUTTON_MESSAGE[START]);
 }
 
 void SocketUdpPresenter::startReceiver()
 {
-    status = ON;
+    socketModel->startReceiver();
     view->lightOnLed();
     view->setStartButtonLabel(START_BUTTON_MESSAGE[STOP]);
 }
@@ -42,7 +40,7 @@ void SocketUdpPresenter::addDatagramToList(QString datagram)
 
 void SocketUdpPresenter::onStartButtonPressed()
 {
-    switch(status){
+    switch(socketModel->getCurrentStatus()){
     case OFF:
         startReceiver();
         break;
@@ -59,12 +57,5 @@ void SocketUdpPresenter::onClearButtonPressed()
 
 void SocketUdpPresenter::datagramArrived(QString datagram)
 {
-    switch (status) {
-    case OFF:
-        //just ignore
-        break;
-    case ON:
-        addDatagramToList(datagram);
-        break;
-    }
+    addDatagramToList(datagram);
 }

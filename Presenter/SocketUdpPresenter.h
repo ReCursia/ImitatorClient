@@ -16,7 +16,6 @@ private:
     SocketUdpModel* socketModel;
     DataModel* dataModel;
     SocketUdpContractView* view;
-    Status status;
 private:
     void stopReceiver();
     void startReceiver();
