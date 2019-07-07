@@ -29,5 +29,6 @@ SharedMemoryReceiveStrategy::SharedMemoryReceiveStrategy()
 SharedMemoryReceiveStrategy::~SharedMemoryReceiveStrategy()
 {
     delete sharedMemory;
-    delete semaphore;
+    delete freeToRead;
+    delete freeToWrite;
 }
