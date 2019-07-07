@@ -7,25 +7,21 @@
 #include "QStringListModel"
 #include "DataModel.h"
 #include <Contract/SocketUdpContractPresenter.h>
+#include <Utilities/receivestrategy.h>
 
 enum Status {OFF,ON};
 
-const quint16 RECEIVER_PORT = 3456;
-
-class SocketUdpModel: public QObject
+class ReceiveModel: public QObject
 {
 private:
     Q_OBJECT
     Status status;
-    QUdpSocket* socket;
-    QHostAddress address;
     SocketUdpContractPresenter* presenter;
+    ReceiveStrategy* receiveStrategy;
     bool isWorking();
-private slots:
-    void readDatagram();
 public:
-    SocketUdpModel(SocketUdpContractPresenter* presenter);
-    ~SocketUdpModel();
+    ReceiveModel(SocketUdpContractPresenter* presenter);
+    ~ReceiveModel();
     Status getCurrentStatus();
     void startReceiver();
     void stopReceiver();

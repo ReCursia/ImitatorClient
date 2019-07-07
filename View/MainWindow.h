@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <Presenter/SocketUdpPresenter.h>
+#include <Presenter/ReceivePresenter.h>
 #include "Contract/SocketUdpContractView.h"
 
 namespace Ui {
@@ -20,7 +20,7 @@ private slots:
     void on_clearButton_clicked();
 private:
     Ui::MainWindow *ui;
-    SocketUdpPresenter* presenter;
+    ReceivePresenter* presenter;
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

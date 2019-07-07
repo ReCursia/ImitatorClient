@@ -1,9 +1,9 @@
-#include "SocketUdpPresenter.h"
+#include "ReceivePresenter.h"
 
-SocketUdpPresenter::SocketUdpPresenter(SocketUdpContractView* view)
+ReceivePresenter::ReceivePresenter(SocketUdpContractView* view)
 {
     this->view = view;
-    socketModel = new SocketUdpModel(this);
+    receiveModel = new ReceiveModel(this);
     dataModel = new DataModel();
     //Connect model to listView
     view->setListModel(dataModel->getModel());
@@ -11,36 +11,36 @@ SocketUdpPresenter::SocketUdpPresenter(SocketUdpContractView* view)
     view->lightOffLed();
 }
 
-SocketUdpPresenter::~SocketUdpPresenter()
+ReceivePresenter::~ReceivePresenter()
 {
-    delete socketModel;
+    delete receiveModel;
     delete dataModel;
     delete view;
 }
 
-void SocketUdpPresenter::stopReceiver()
+void ReceivePresenter::stopReceiver()
 {
-    socketModel->stopReceiver();
+    receiveModel->stopReceiver();
     view->lightOffLed();
     view->setStartButtonLabel(START_BUTTON_MESSAGE[START]);
 }
 
-void SocketUdpPresenter::startReceiver()
+void ReceivePresenter::startReceiver()
 {
-    socketModel->startReceiver();
+    receiveModel->startReceiver();
     view->lightOnLed();
     view->setStartButtonLabel(START_BUTTON_MESSAGE[STOP]);
 }
 
-void SocketUdpPresenter::addDatagramToList(QString datagram)
+void ReceivePresenter::addDatagramToList(QString datagram)
 {
     dataModel->addDatagram(datagram);
     view->scrollListToBottom();
 }
 
-void SocketUdpPresenter::onStartButtonPressed()
+void ReceivePresenter::onStartButtonPressed()
 {
-    switch(socketModel->getCurrentStatus()){
+    switch(receiveModel->getCurrentStatus()){
     case OFF:
         startReceiver();
         break;
@@ -50,12 +50,12 @@ void SocketUdpPresenter::onStartButtonPressed()
     }
 }
 
-void SocketUdpPresenter::onClearButtonPressed()
+void ReceivePresenter::onClearButtonPressed()
 {
     dataModel->clear();
 }
 
-void SocketUdpPresenter::datagramArrived(QString datagram)
+void ReceivePresenter::datagramArrived(QString datagram)
 {
     addDatagramToList(datagram);
 }

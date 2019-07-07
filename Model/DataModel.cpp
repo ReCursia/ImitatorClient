@@ -9,7 +9,7 @@ QString DataModel::getCheckSumMessage(double firstValue,double secondValue)
 DataModel::DataModel()
 {
     model = new QStringListModel();
-    model->setStringList(values); //TODO исправить! каждый раз переопредять лист для модели? Возможно некорректно?
+    model->setStringList(values);
 }
 
 DataModel::~DataModel()
@@ -33,13 +33,13 @@ void DataModel::addDatagram(QString datagram)
     result.append(getCheckSumMessage(sum,dataCheckSum));
 
     values.append(result);
-    model->setStringList(values); //TODO исправить! каждый раз переопредять лист для модели? Возможно некорректно?
+    model->setStringList(values);
 }
 
 void DataModel::clear()
 {
     values.clear();
-    model->setStringList(values); //TODO исправить! каждый раз переопредять лист для модели? Возможно некорректно?
+    model->setStringList(values);
 }
 
 QStringListModel *DataModel::getModel()

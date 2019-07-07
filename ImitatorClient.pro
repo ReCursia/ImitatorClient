@@ -29,8 +29,12 @@ SOURCES += \
         Contract/SocketUdpContractView.cpp \
         Led/Led.cpp \
         Model/DataModel.cpp \
-        Model/SocketUdpModel.cpp \
-        Presenter/SocketUdpPresenter.cpp \
+        Model/ReceiveModel.cpp \
+        Model/ReceiveStrategies/namedpipereceivestrategy.cpp \
+        Model/ReceiveStrategies/sharedmemoryreceivestrategy.cpp \
+        Model/ReceiveStrategies/socketudpreceivestrategy.cpp \
+        Presenter/ReceivePresenter.cpp \
+        Utilities/receivestrategy.cpp \
         main.cpp \
         View\mainWindow.cpp
 
@@ -39,8 +43,12 @@ HEADERS += \
         Contract/SocketUdpContractView.h \
         Led/Led.h \
         Model/DataModel.h \
-        Model/SocketUdpModel.h \
-        Presenter/SocketUdpPresenter.h \
+    Model/ReceiveModel.h \
+    Model/ReceiveStrategies/namedpipereceivestrategy.h \
+    Model/ReceiveStrategies/sharedmemoryreceivestrategy.h \
+    Model/ReceiveStrategies/socketudpreceivestrategy.h \
+    Presenter/ReceivePresenter.h \
+    Utilities/receivestrategy.h \
         View\mainWindow.h \
 
 FORMS += \
