@@ -3,7 +3,7 @@
 #include <Model/ReceiveStrategies/namedpipereceivestrategy.h>
 #include <Model/ReceiveStrategies/socketudpreceivestrategy.h>
 
-ReceivePresenter::ReceivePresenter(SocketUdpContractView* view)
+ReceivePresenter::ReceivePresenter(ReceiverContractView* view)
 {
     this->view = view;
     receiveModel = new ReceiveModel(this);

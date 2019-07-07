@@ -7,7 +7,8 @@
 #include <QSystemSemaphore>
 #include <QThread>
 
-const QString SEMAPHORE_NAME = "SemaphoreName";
+const QString SEMAPHORE_NAME_WRITE = "SemaphoreNameWrite";
+const QString SEMAPHORE_NAME_READ = "SemaphoreNameRead";
 const QString SHARED_MEMORY_NAME = "SharedMemoryName";
 
 class SharedMemoryReceiveStrategy : public QThread, public ReceiveStrategy
@@ -15,7 +16,8 @@ class SharedMemoryReceiveStrategy : public QThread, public ReceiveStrategy
 private:
     Q_OBJECT
     QSharedMemory* sharedMemory;
-    QSystemSemaphore* semaphore;
+    QSystemSemaphore* freeToWrite;
+    QSystemSemaphore* freeToRead;
 protected:
     void run();
 public:

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <Model/ReceiveModel.h>
 #include <Contract/SocketUdpContractPresenter.h>
-#include <Contract/SocketUdpContractView.h>
+#include <Contract/ReceiverContractView.h>
 
 const QStringList START_BUTTON_MESSAGE = {"Запуск","Остановка"};
 enum StartButtonMessage {START,STOP};
@@ -18,13 +18,13 @@ private:
     Q_OBJECT
     ReceiveModel* receiveModel;
     DataModel* dataModel;
-    SocketUdpContractView* view;
+    ReceiverContractView* view;
 private:
     void stopReceiver();
     void startReceiver();
     void addDatagramToList(QString datagram);
 public:
-    ReceivePresenter(SocketUdpContractView* view);
+    ReceivePresenter(ReceiverContractView* view);
     ~ReceivePresenter();
     void onStartButtonPressed();
     void onClearButtonPressed();

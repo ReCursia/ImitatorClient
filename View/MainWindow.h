@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <Presenter/ReceivePresenter.h>
-#include "Contract/SocketUdpContractView.h"
+#include "Contract/ReceiverContractView.h"
 
 namespace Ui {
 class MainWindow;
@@ -12,7 +12,7 @@ class MainWindow;
 const int STATUS_BAR_DEFAULT_TIMEOUT = 5000; //ms
 
 
-class MainWindow : public QMainWindow, public SocketUdpContractView
+class MainWindow : public QMainWindow, public ReceiverContractView
 {
     Q_OBJECT
 private slots:

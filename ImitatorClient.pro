@@ -25,8 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Contract/ReceiverContractView.cpp \
         Contract/SocketUdpContractPresenter.cpp \
-        Contract/SocketUdpContractView.cpp \
         Led/Led.cpp \
         Model/DataModel.cpp \
         Model/ReceiveModel.cpp \
@@ -39,8 +39,8 @@ SOURCES += \
         View\mainWindow.cpp
 
 HEADERS += \
+    Contract/ReceiverContractView.h \
         Contract/SocketUdpContractPresenter.h \
-        Contract/SocketUdpContractView.h \
         Led/Led.h \
         Model/DataModel.h \
     Model/ReceiveModel.h \

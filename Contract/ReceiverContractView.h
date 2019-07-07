@@ -4,10 +4,10 @@
 #include <QObject>
 #include<QStringListModel>
 
-class SocketUdpContractView
+class ReceiverContractView
 {
 public:
-    virtual ~SocketUdpContractView() = 0;
+    virtual ~ReceiverContractView() = 0;
     //Start button
     virtual void setStartButtonLabel(QString str) = 0;
     //Status bar
