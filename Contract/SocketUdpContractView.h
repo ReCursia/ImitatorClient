@@ -18,6 +18,10 @@ public:
     //List view
     virtual void setListModel(QStringListModel* model) = 0;
     virtual void scrollListToBottom() = 0;
+    //Combo box
+    virtual void disableComboBox() = 0;
+    virtual void enableComboBox() = 0;
+    virtual void addItemToComboBox(QString value) = 0;
 };
 
 #endif // SOCKETUDPCONTRACT_H

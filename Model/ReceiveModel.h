@@ -25,6 +25,7 @@ public:
     Status getCurrentStatus();
     void startReceiver();
     void stopReceiver();
+    void setReceiveStrategy(ReceiveStrategy* newStrategy);
 };
 
 

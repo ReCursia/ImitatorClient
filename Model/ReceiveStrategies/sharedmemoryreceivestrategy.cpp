@@ -3,7 +3,7 @@
 #include <QBuffer>
 #include <QDebug>
 
-void SharedMemoryReceiveStrategy::readDatagram()
+void SharedMemoryReceiveStrategy::run()
 {
     while(true){
         qDebug() << "НУКА БЛЕ";
@@ -22,7 +22,7 @@ SharedMemoryReceiveStrategy::SharedMemoryReceiveStrategy()
 {
     sharedMemory = new QSharedMemory();
     semaphore = new QSystemSemaphore(SEMAPHORE_NAME,0,QSystemSemaphore::Open);
-    readDatagram();
+    this->start();
 }
 
 SharedMemoryReceiveStrategy::~SharedMemoryReceiveStrategy()

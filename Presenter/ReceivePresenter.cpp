@@ -1,5 +1,8 @@
 #include "ReceivePresenter.h"
 
+#include <Model/ReceiveStrategies/namedpipereceivestrategy.h>
+#include <Model/ReceiveStrategies/socketudpreceivestrategy.h>
+
 ReceivePresenter::ReceivePresenter(SocketUdpContractView* view)
 {
     this->view = view;
@@ -9,6 +12,12 @@ ReceivePresenter::ReceivePresenter(SocketUdpContractView* view)
     view->setListModel(dataModel->getModel());
     //Led is OFF
     view->lightOffLed();
+    //Combo box
+    //TODO FIX THAT
+    for(int i = 0; i < 3; i++){
+        ComboBoxValues value = static_cast<ComboBoxValues>(i);
+        view->addItemToComboBox(COMBO_BOX_VALUES[value]);
+    }
 }
 
 ReceivePresenter::~ReceivePresenter()
@@ -58,4 +67,18 @@ void ReceivePresenter::onClearButtonPressed()
 void ReceivePresenter::datagramArrived(QString datagram)
 {
     addDatagramToList(datagram);
+}
+
+void ReceivePresenter::onCurrentComboBoxIndexChanged(int index)
+{
+    switch(index){
+        case UDP:
+            receiveModel->setReceiveStrategy(new SocketUdpReceiveStrategy());
+            break;
+        case NAMED_PIPE:
+            receiveModel->setReceiveStrategy(new NamedPipeReceiveStrategy());
+            break;
+        case SHARED_MEMORY:
+            break;
+        }
 }

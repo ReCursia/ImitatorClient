@@ -31,6 +31,12 @@ void ReceiveModel::stopReceiver()
     status = OFF;
 }
 
+void ReceiveModel::setReceiveStrategy(ReceiveStrategy *newStrategy)
+{
+    //delete receiveStrategy;
+    //receiveStrategy = newStrategy;
+}
+
 bool ReceiveModel::isWorking()
 {
     return (status == ON);

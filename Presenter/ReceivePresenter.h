@@ -9,6 +9,9 @@
 const QStringList START_BUTTON_MESSAGE = {"Запуск","Остановка"};
 enum StartButtonMessage {START,STOP};
 
+const QStringList COMBO_BOX_VALUES = {"UDP","Named pipe","Shared memory"};
+enum ComboBoxValues {UDP,NAMED_PIPE,SHARED_MEMORY};
+
 class ReceivePresenter: public QObject, public SocketUdpContractPresenter
 {
 private:
@@ -26,6 +29,7 @@ public:
     void onStartButtonPressed();
     void onClearButtonPressed();
     void datagramArrived(QString datagram);
+    void onCurrentComboBoxIndexChanged(int index);
 };
 
 #endif // SOCKETUDPPRESENTER_H

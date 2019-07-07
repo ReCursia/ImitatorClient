@@ -55,3 +55,23 @@ void MainWindow::scrollListToBottom()
 {
     ui->listView->scrollToBottom();
 }
+
+void MainWindow::disableComboBox()
+{
+    ui->comboBox->setEnabled(false);
+}
+
+void MainWindow::enableComboBox()
+{
+    ui->comboBox->setEnabled(true);
+}
+
+void MainWindow::addItemToComboBox(QString value)
+{
+    ui->comboBox->addItem(value);
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    presenter->onCurrentComboBoxIndexChanged(index);
+}

@@ -5,16 +5,19 @@
 
 #include <QSharedMemory>
 #include <QSystemSemaphore>
+#include <QThread>
 
 const QString SEMAPHORE_NAME = "SemaphoreName";
 const QString SHARED_MEMORY_NAME = "SharedMemoryName";
 
-class SharedMemoryReceiveStrategy : public ReceiveStrategy
+class SharedMemoryReceiveStrategy : public QThread, public ReceiveStrategy
 {
 private:
+    Q_OBJECT
     QSharedMemory* sharedMemory;
     QSystemSemaphore* semaphore;
-    void readDatagram();
+protected:
+    void run();
 public:
     SharedMemoryReceiveStrategy();
     ~SharedMemoryReceiveStrategy();

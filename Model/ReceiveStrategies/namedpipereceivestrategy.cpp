@@ -14,7 +14,7 @@ NamedPipeReceiveStrategy::NamedPipeReceiveStrategy()
 {
     client = new QLocalSocket();
     client->connectToServer(PIPE_NAME);
-    connect(client,SIGNAL(readyRead()),this,SLOT(readData()));
+    connect(client,SIGNAL(readyRead()),this,SLOT(readDatagram()));
 }
 
 NamedPipeReceiveStrategy::~NamedPipeReceiveStrategy()
