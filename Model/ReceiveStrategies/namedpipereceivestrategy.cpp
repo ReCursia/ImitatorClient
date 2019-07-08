@@ -3,10 +3,7 @@
 void NamedPipeReceiveStrategy::readDatagram()
 {
     QString data = client->readAll();
-    //NOTIFY
     manager->notifiy(data);
-    //qDebug() << data;
-    //client->abort();
     client->disconnectFromServer();
     client->connectToServer(PIPE_NAME);
 }

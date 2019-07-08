@@ -1,5 +1,4 @@
 #include "ReceivePresenter.h"
-
 #include <Model/ReceiveStrategies/namedpipereceivestrategy.h>
 #include <Model/ReceiveStrategies/sharedmemoryreceivestrategy.h>
 #include <Model/ReceiveStrategies/socketudpreceivestrategy.h>
@@ -17,8 +16,7 @@ ReceivePresenter::ReceivePresenter(ReceiverContractView* view)
     //Led is OFF
     view->lightOffLed();
     //Combo box
-    //TODO FIX THAT
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < COMBO_BOX_SIZE; i++){
         ComboBoxValues value = static_cast<ComboBoxValues>(i);
         view->addItemToComboBox(COMBO_BOX_VALUES[value]);
     }
@@ -72,7 +70,7 @@ void ReceivePresenter::dataArrived(QString data)
 {
     switch(receiveModel->getCurrentStatus()){
     case OFF:
-        //NOTHING
+        //do nothing
         break;
     case ON:
         addDatagramToList(data);

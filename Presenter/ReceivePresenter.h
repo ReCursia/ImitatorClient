@@ -10,6 +10,7 @@ enum StartButtonMessage {START,STOP};
 
 const QStringList COMBO_BOX_VALUES = {"UDP","Named pipe","Shared memory"};
 enum ComboBoxValues {UDP,NAMED_PIPE,SHARED_MEMORY};
+const int COMBO_BOX_SIZE = COMBO_BOX_VALUES.size();
 
 class ReceivePresenter: public QObject, public DataListener
 {

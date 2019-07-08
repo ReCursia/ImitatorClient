@@ -2,7 +2,6 @@
 #define SOCKETUDPRECEIVESTRATEGY_H
 
 #include <Utilities/receivestrategy.h>
-
 #include <QObject>
 #include <QUdpSocket>
 

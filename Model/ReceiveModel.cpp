@@ -1,6 +1,5 @@
 #include "ReceiveModel.h"
 #include "QDebug"
-
 #include <Model/ReceiveStrategies/namedpipereceivestrategy.h>
 #include <Model/ReceiveStrategies/sharedmemoryreceivestrategy.h>
 #include <Model/ReceiveStrategies/socketudpreceivestrategy.h>

@@ -3,8 +3,6 @@
 
 #include "eventmanager.h"
 
-
-
 class ReceiveStrategy
 {
 public:

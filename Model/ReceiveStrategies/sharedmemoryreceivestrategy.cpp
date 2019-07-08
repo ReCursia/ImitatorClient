@@ -12,7 +12,6 @@ void SharedMemoryReceiveStrategy::run()
         buffer.setData((char*)sharedMemory->constData(),sharedMemory->size());
         buffer.open(QBuffer::ReadOnly);
         QString data = buffer.readAll();
-        //qDebug() << data;
         manager->notifiy(data);
         sharedMemory->detach();
         freeToWrite->release();

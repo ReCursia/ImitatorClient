@@ -2,7 +2,6 @@
 #define SHAREDMEMORYRECEIVESTRATEGY_H
 
 #include <Utilities/receivestrategy.h>
-
 #include <QSharedMemory>
 #include <QSystemSemaphore>
 #include <QThread>
