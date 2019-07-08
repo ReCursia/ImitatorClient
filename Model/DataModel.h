@@ -12,7 +12,7 @@ class DataModel
 private:
     QStringList values;
     QStringListModel* model;
-    QString getCheckSumMessage(double firstValue,double secondValue);
+    QString getCheckSumMessage(int firstValue,int secondValue);
 public:
     DataModel();
     ~DataModel();

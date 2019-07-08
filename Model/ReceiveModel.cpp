@@ -1,15 +1,15 @@
 #include "ReceiveModel.h"
 #include "QDebug"
 
+#include <Model/ReceiveStrategies/namedpipereceivestrategy.h>
 #include <Model/ReceiveStrategies/sharedmemoryreceivestrategy.h>
 #include <Model/ReceiveStrategies/socketudpreceivestrategy.h>
 
-ReceiveModel::ReceiveModel(SocketUdpContractPresenter* presenter){
-    this->presenter = presenter;
+ReceiveModel::ReceiveModel(){
     //Status
     status = OFF;
     //Strategy
-    receiveStrategy = new SharedMemoryReceiveStrategy();
+    receiveStrategy = new SocketUdpReceiveStrategy();
 }
 
 ReceiveModel::~ReceiveModel(){
@@ -35,6 +35,11 @@ void ReceiveModel::setReceiveStrategy(ReceiveStrategy *newStrategy)
 {
     //delete receiveStrategy;
     //receiveStrategy = newStrategy;
+}
+
+void ReceiveModel::subscribe(DataListener *newListener)
+{
+    receiveStrategy->manager->subscribe(newListener);
 }
 
 bool ReceiveModel::isWorking()

@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <Model/ReceiveModel.h>
-#include <Contract/SocketUdpContractPresenter.h>
 #include <Contract/ReceiverContractView.h>
 
 const QStringList START_BUTTON_MESSAGE = {"Запуск","Остановка"};
@@ -12,7 +11,7 @@ enum StartButtonMessage {START,STOP};
 const QStringList COMBO_BOX_VALUES = {"UDP","Named pipe","Shared memory"};
 enum ComboBoxValues {UDP,NAMED_PIPE,SHARED_MEMORY};
 
-class ReceivePresenter: public QObject, public SocketUdpContractPresenter
+class ReceivePresenter: public QObject, public DataListener
 {
 private:
     Q_OBJECT
@@ -28,8 +27,8 @@ public:
     ~ReceivePresenter();
     void onStartButtonPressed();
     void onClearButtonPressed();
-    void datagramArrived(QString datagram);
     void onCurrentComboBoxIndexChanged(int index);
+    void dataArrived(QString data);
 };
 
 #endif // SOCKETUDPPRESENTER_H

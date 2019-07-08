@@ -26,7 +26,6 @@ CONFIG += c++11
 
 SOURCES += \
         Contract/ReceiverContractView.cpp \
-        Contract/SocketUdpContractPresenter.cpp \
         Led/Led.cpp \
         Model/DataModel.cpp \
         Model/ReceiveModel.cpp \
@@ -34,13 +33,14 @@ SOURCES += \
         Model/ReceiveStrategies/sharedmemoryreceivestrategy.cpp \
         Model/ReceiveStrategies/socketudpreceivestrategy.cpp \
         Presenter/ReceivePresenter.cpp \
+        Utilities/datalistener.cpp \
+        Utilities/eventmanager.cpp \
         Utilities/receivestrategy.cpp \
         main.cpp \
         View\mainWindow.cpp
 
 HEADERS += \
     Contract/ReceiverContractView.h \
-        Contract/SocketUdpContractPresenter.h \
         Led/Led.h \
         Model/DataModel.h \
     Model/ReceiveModel.h \
@@ -48,6 +48,8 @@ HEADERS += \
     Model/ReceiveStrategies/sharedmemoryreceivestrategy.h \
     Model/ReceiveStrategies/socketudpreceivestrategy.h \
     Presenter/ReceivePresenter.h \
+    Utilities/datalistener.h \
+    Utilities/eventmanager.h \
     Utilities/receivestrategy.h \
         View\mainWindow.h \
 

@@ -4,15 +4,17 @@ void NamedPipeReceiveStrategy::readDatagram()
 {
     QString data = client->readAll();
     //NOTIFY
-
-    //Is needed??
+    manager->notifiy(data);
+    //qDebug() << data;
     //client->abort();
-    //client->connectToServer(PIPE_NAME);
+    client->disconnectFromServer();
+    client->connectToServer(PIPE_NAME);
 }
 
 NamedPipeReceiveStrategy::NamedPipeReceiveStrategy()
 {
     client = new QLocalSocket();
+    client->waitForConnected();
     client->connectToServer(PIPE_NAME);
     connect(client,SIGNAL(readyRead()),this,SLOT(readDatagram()));
 }

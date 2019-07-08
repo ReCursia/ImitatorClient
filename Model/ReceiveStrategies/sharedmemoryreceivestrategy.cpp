@@ -6,14 +6,15 @@
 void SharedMemoryReceiveStrategy::run()
 {
     while(true){
-        qDebug() << "НУКА БЛЕ";
         freeToRead->acquire();
-        sharedMemory->setKey(SHARED_MEMORY_NAME);
+        sharedMemory->attach();
         QBuffer buffer;
         buffer.setData((char*)sharedMemory->constData(),sharedMemory->size());
         buffer.open(QBuffer::ReadOnly);
         QString data = buffer.readAll();
-        qDebug() << data;
+        //qDebug() << data;
+        manager->notifiy(data);
+        sharedMemory->detach();
         freeToWrite->release();
     }
 }
@@ -21,6 +22,7 @@ void SharedMemoryReceiveStrategy::run()
 SharedMemoryReceiveStrategy::SharedMemoryReceiveStrategy()
 {
     sharedMemory = new QSharedMemory();
+    sharedMemory->setKey(SHARED_MEMORY_NAME);
     freeToRead = new QSystemSemaphore(SEMAPHORE_NAME_READ,0,QSystemSemaphore::Open);
     freeToWrite = new QSystemSemaphore(SEMAPHORE_NAME_WRITE,0,QSystemSemaphore::Open);
     this->start();

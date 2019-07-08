@@ -7,9 +7,7 @@ void SocketUdpReceiveStrategy::readDatagram()
     QHostAddress sender;
     quint16 senderPort;
     socket->readDatagram(buffer.data(),buffer.size(),&sender,&senderPort);
-    qDebug() << QString::fromStdString(buffer.toStdString());
-    //Notify presenter about new data
-    //if(isWorking()) presenter->datagramArrived(QString::fromStdString(buffer.toStdString()));
+    manager->notifiy(QString::fromStdString(buffer.toStdString()));
 }
 
 SocketUdpReceiveStrategy::SocketUdpReceiveStrategy()

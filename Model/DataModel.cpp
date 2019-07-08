@@ -1,9 +1,10 @@
 #include "DataModel.h"
+#include "QDebug"
+#include "sysinfoapi.h"
 
-
-QString DataModel::getCheckSumMessage(double firstValue,double secondValue)
+QString DataModel::getCheckSumMessage(int firstValue,int secondValue)
 {
-    return qFuzzyCompare(firstValue,secondValue) ? CHECK_SUM_MESSAGE[OK] : CHECK_SUM_MESSAGE[FAIL];
+    return firstValue == secondValue ? CHECK_SUM_MESSAGE[OK] : CHECK_SUM_MESSAGE[FAIL];
 }
 
 DataModel::DataModel()
@@ -21,16 +22,15 @@ DataModel::~DataModel()
 void DataModel::addDatagram(QString datagram)
 {
     QStringList strings = datagram.split(' ');
-
     QString result;
-    double sum = 0;
-    for(int i = 0; i < strings.size()-1;i++){
-        result.append(strings[i]).append("; ");
-        sum += strings[i].toDouble();
+    int sum = 0;
+    for(int i = 0; i < strings.size()-2;i++){
+        sum += strings[i].toInt();
     }
-
-    double dataCheckSum = strings.last().toDouble();
-    result.append(getCheckSumMessage(sum,dataCheckSum));
+    int dataCheckSum = strings.at(strings.size()-2).toInt();
+    result.append(getCheckSumMessage(sum,dataCheckSum)).append("; ");
+    unsigned long time_delta = strings.at(strings.size()-1).toUInt();
+    result.append("delta time = ").append(QString::number(GetTickCount()-time_delta));
 
     values.append(result);
     model->setStringList(values);
