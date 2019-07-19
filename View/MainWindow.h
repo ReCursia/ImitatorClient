@@ -9,9 +9,6 @@ namespace Ui {
 class MainWindow;
 }
 
-const int STATUS_BAR_DEFAULT_TIMEOUT = 5000; //ms
-
-
 class MainWindow : public QMainWindow, public ReceiverContractView
 {
     Q_OBJECT
@@ -27,7 +24,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void setStartButtonLabel(QString str);
-    void setStatusBarMessage(QString message);
     void lightOnLed();
     void lightOffLed();
     void setListModel(QStringListModel *model);

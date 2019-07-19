@@ -26,7 +26,6 @@ ReceivePresenter::~ReceivePresenter()
 {
     delete receiveModel;
     delete dataModel;
-    delete view;
 }
 
 void ReceivePresenter::stopReceiver()

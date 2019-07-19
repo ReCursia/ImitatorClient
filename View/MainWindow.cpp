@@ -31,11 +31,6 @@ void MainWindow::setStartButtonLabel(QString str)
     ui->startButton->setText(str);
 }
 
-void MainWindow::setStatusBarMessage(QString message)
-{
-    ui->statusBar->showMessage(message,STATUS_BAR_DEFAULT_TIMEOUT);
-}
-
 void MainWindow::lightOnLed()
 {
     ui->led->turnOn();

@@ -10,8 +10,6 @@ public:
     virtual ~ReceiverContractView() = 0;
     //Start button
     virtual void setStartButtonLabel(QString str) = 0;
-    //Status bar
-    virtual void setStatusBarMessage(QString message) = 0;
     //Led
     virtual void lightOnLed() = 0;
     virtual void lightOffLed() = 0;
